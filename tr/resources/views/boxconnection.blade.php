@@ -62,7 +62,7 @@
                 @if ($index1 == $index2)
                 <td class='noTouch'></td>
                 @else
-            <td><button class='buttonGroup'> -</button></td>
+            <td><button data-type="{{$aElementDetailItem['type']}}" class='buttonGroup' value="0"> -</button></td>
                 @endif
             @endforeach
         </tr>
@@ -73,5 +73,27 @@
 
 @section('script')
 <script>
+    $('.buttonGroup').click(function() {
+        if ($(this).val() == 0) {
+            let type = $(this).data('type')
+            switch (type) {
+                case 0:
+                    $(this).html('O');
+                    $(this).val(1);
+                    break;
+                case 1:
+                    $(this).html('OO');
+                    $(this).val(1);
+                    break;
+                case 2:
+                    $(this).html('OOO');
+                    $(this).val(1);
+                    break;
+            }
+        } else {
+            $(this).html('-');
+            $(this).val(0);
+        }
+    })
 </script>
 @endsection
